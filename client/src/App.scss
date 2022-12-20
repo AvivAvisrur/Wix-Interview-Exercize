@@ -16,9 +16,34 @@ body {
 	}
 
 	.results {
+		display: flex;
+		align-items: center;
+		gap:10px;
 		color: #7a92a5;
 		font-size: 12px;
 		margin: 12px 5px;
+	}
+	.hideTicketDiv *{
+		font-style: italic;
+	}
+	.hideTicketSpan::before{
+		content: "(";
+		margin-right: 5px;
+	}
+	.hideTicketSpan::after{
+		content: "-";
+		margin: 5px;
+	}
+	.hideTicketDiv::after{
+		content:")";
+		margin-left: 5px;
+	}
+	.hideTicketDiv button{
+		color:blue;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		
 	}
 
 	header {
@@ -52,6 +77,8 @@ body {
 		}
 	}
 
+	
+
 	a {
 		color: #3899ec;
 		cursor: pointer;
@@ -60,11 +87,11 @@ body {
 	}
 
 	.tickets {
-
 		margin: 0;
 		padding: 0;
 
 		.ticket {
+			
 			width: 100%;
 			flex-shrink: 0;
 			border-radius: 8px;
@@ -80,6 +107,9 @@ body {
 
 			&:hover {
 				box-shadow: 0 2px 6px 1px #d3d7da;
+				// .hide-ticket-button{
+				// 	display: block;
+				// }
 			}
 
 			.title {
@@ -88,6 +118,50 @@ body {
 				font-weight: 400;
 				font-style: normal;
 				color: #20455e;
+			}
+			.contentCollapse {
+				font-size: 14px;
+				line-height: 1.5;
+				max-height: calc(3 * 1.5 * 14px);
+				overflow-y: hidden;
+				color:#7a92a5;
+		
+		
+				&.show-more{
+					max-height: none;
+				}
+			}
+			.content-button{
+				border:none;
+				background-color: transparent;
+				color: #93c3ee;
+				cursor: pointer;
+				text-transform: capitalize;
+			}
+		
+			.hide-ticket-button{
+				position: absolute;
+				top:0;
+				right:0;
+				margin:10px;
+				border:none;
+				cursor:pointer;
+				background-color: transparent;
+			}
+			
+			.labelsDiv{
+				display:flex;
+				gap:10px;
+				justify-content: flex-end;
+				
+			}
+			.labelsDiv label{
+				border:1px solid #cbe4fa;
+				display: block;
+				padding: 1px 10px 1px 10px;
+				border-radius: 3px;
+				background-color:#cde4f8;
+
 			}
 			
 			footer {
@@ -106,4 +180,5 @@ body {
 			
 		}
 	}
+	
 }

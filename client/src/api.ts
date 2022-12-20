@@ -1,25 +1,22 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export type Ticket = {
-	id: string,
-	title: string;
-	content: string;
-	creationTime: number;
-	userEmail: string;
-	labels?: string[];
+  id: string
+  title: string
+  content: string
+  creationTime: number
+  userEmail: string
+  labels?: string[]
 }
 
 export type ApiClient = {
-	getTickets: () => Promise<Ticket[]>;
+  getTickets: (search: string, offset: number, LIMIT: number) => Promise<Ticket[]>
 }
 
 export const createApiClient = (): ApiClient => {
-	return {
-		getTickets: () => {
-			return axios.get(`http://localhost:3232/api/tickets`).then((res) => res.data);
-		}
-	}
+  return {
+    getTickets: async (search: string, offset: number, LIMIT: number) => {
+      return await axios.get(`http://localhost:3232/api/tickets`, { params: { search, offset, limit: LIMIT } }).then((res) => res.data)
+    },
+  }
 }
-
-
-
